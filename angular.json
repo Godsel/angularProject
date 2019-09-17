@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appTMDB": {
+    "moviepedia-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appTMDB",
+            "outputPath": "dist/moviepedia-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appTMDB:build"
+            "browserTarget": "moviepedia-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appTMDB:build:production"
+              "browserTarget": "moviepedia-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appTMDB:build"
+            "browserTarget": "moviepedia-app:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appTMDB:serve"
+            "devServerTarget": "moviepedia-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appTMDB:serve:production"
+              "devServerTarget": "moviepedia-app:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "appTMDB"
+  "defaultProject": "moviepedia-app"
 }
