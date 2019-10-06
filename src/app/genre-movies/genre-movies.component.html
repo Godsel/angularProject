@@ -1,0 +1,30 @@
+<div class="container-fluid app-container">
+    <div class="row">
+        <div class="col-sm-1">
+            <div class="sidebar-nav"></div>
+                <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                </div>
+                <div class="sidenav">
+                    <div class="panel-heading">Movies Category</div>
+                    <ul class="nav nav-stacked">
+                            <a class="list-group-item" *ngFor="let genre of listGenres">{{genre.name}}</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/end left column-->
+        <!--/.sidebar-offcanvas-->
+        <div class ="content">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <app-moviecard></app-moviecard>
+            </div>
+        </div>
+    </div>
+</div>

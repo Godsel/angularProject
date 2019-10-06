@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie, MovieAdapter, MovieDetailsAdapter, GenreAdapter, Genre } from '../models/movie.model';
+import { Movie, Genre } from '../models/movie.model';
 import { MoviedbService } from '../services/moviedb.service';
 import { map } from 'rxjs/operators';
-import { MovieRequest } from '../models/request.model';
+import { MoviesRequest } from '../models/request.model';
 
 @Component({
   selector: 'app-moviecard',
@@ -11,18 +11,15 @@ import { MovieRequest } from '../models/request.model';
 })
 export class MoviecardComponent implements OnInit {
 
-  movieRequest: MovieRequest;
+  movieRequest: MoviesRequest;
   movies: Movie[];
   braveheart: Movie;
-
-  images: string[];
 
 
   genre: Genre = {id: 28, name: 'Action'};
 
   constructor(
     private moviedbService: MoviedbService,
-    private movieAdapter: MovieAdapter,
     ) {}
 
   ngOnInit() {
@@ -32,6 +29,7 @@ export class MoviecardComponent implements OnInit {
       this.movies = this.movieRequest.movies;
       // console.log('scope is', this.braveheart);
       this.braveheart = this.movies[0];
+      console.log(this.braveheart);
     }));
 
     this.moviedbService.getMoviesByGenre(this.genre, 2).subscribe((res => {

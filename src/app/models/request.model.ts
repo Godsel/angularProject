@@ -1,30 +1,33 @@
-import { Movie, MovieAdapter } from './movie.model';
+import { Movie, Genre } from './movie.model';
 import { Injectable } from '@angular/core';
 import { Adapter } from './adapter';
 
-export class MovieRequest {
+export class MoviesRequest {
     constructor(
       public page: number,
       public totalPages: number,
       public totalResults: number,
       public movies: Movie[],
     ) { }
+
+      static adapt(item: any): MoviesRequest {
+        return new MoviesRequest(
+          item.page,
+          item.total_pages,
+          item.total_results,
+          item.results.map((data: any[]) => Movie.adapt(data)),
+        );
+      }
   }
 
-@Injectable({
-    providedIn: 'root'
-})
+export class GenresRequest {
+    constructor(
+      public genres: Genre[],
+    ) { }
 
-export class MovieRequestAdapter implements Adapter<MovieRequest> {
-  movieAdapter: MovieAdapter = new MovieAdapter();
-  movies: Movie[];
-  adapt(item: any): MovieRequest {
-    this.movies = item.results.map((data: any[]) => this.movieAdapter.adapt(data));
-    return new MovieRequest(
-      item.page,
-      item.total_pages,
-      item.total_results,
-      this.movies,
-    );
+    static adapt(item: any): GenresRequest {
+      return new GenresRequest(
+        item.genres.map((data: any[]) => Genre.adapt(data)),
+      );
   }
 }
