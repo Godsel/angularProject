@@ -36,10 +36,10 @@ export class MovieAdapter implements Adapter<Movie> {
 
   adapt(item: any): Movie {
     return new Movie(
-      item.results.id,
-      item.results.title,
-      item.results.original_title,
-      item.results.poster_path,
+      item.id,
+      item.title,
+      item.original_title,
+      item.poster_path,
       null,
     );
   }
