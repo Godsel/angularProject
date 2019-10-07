@@ -9,14 +9,14 @@ import { HeaderComponent } from './header/header.component';
 import { MoviedbService } from './services/moviedb.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoviecardComponent } from './moviecard/moviecard.component';
-import { MovieAdapter, MovieDetailsAdapter, GenreAdapter } from './models/movie.model';
-import { MovieRequestAdapter } from './models/request.model';
+import { GenreMoviesComponent } from './genre-movies/genre-movies.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MoviecardComponent
+    MoviecardComponent,
+    GenreMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { MovieRequestAdapter } from './models/request.model';
     BrowserAnimationsModule,
     NgbModule,
   ],
-  providers: [MoviedbService, MovieAdapter, MovieDetailsAdapter, GenreAdapter, MovieRequestAdapter],
+  providers: [MoviedbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
