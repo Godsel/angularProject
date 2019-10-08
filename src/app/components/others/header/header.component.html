@@ -7,18 +7,22 @@
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+                <!-- <a routerLink="/test">test</a> -
+                <a routerLink="/styles">styles</a> -
+                <a routerLink="/eleves">eleves</a> -->
             <li class="nav-item active">
                 <a class="nav-link" href="#">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Films</a>
+                <a class="nav-link" href="#"><a routerLink="/Films">Films</a></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Séries</a>
+                <a class="nav-link" href="#"><a routerLink="/Séries">Séries</a></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Acteurs</a>
+                <a class="nav-link" href="#"><a routerLink="/Acteurs">Acteurs</a></a>
             </li>
+            
             <!-- bloc menu déroulant -->
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">Service 1</a>
@@ -33,5 +37,5 @@
             <img src="assets/img/search.svg" width = 20 class="d-inline-block align-top" alt="">
         </button>
     </form>
-          
+    <router-outlet></router-outlet>
 </nav>
