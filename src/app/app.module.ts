@@ -9,14 +9,26 @@ import { HeaderComponent } from './header/header.component';
 import { MoviedbService } from './services/moviedb.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoviecardComponent } from './moviecard/moviecard.component';
-import { GenreMoviesComponent } from './genre-movies/genre-movies.component';
+import { MovieGenresComponent } from './movie-genres/movie-genres.component';
+import { MoviesListComponent } from './movies-list/movies-list.component';
+import { TvshowListComponent } from './tvshow-list/tvshow-list.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { TvshowDetailsComponent } from './tvshow-details/tvshow-details.component';
+import { PeopleDetailsComponent } from './people-details/people-details.component';
+import { PeopleListComponent } from './people-list/people-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MoviecardComponent,
-    GenreMoviesComponent
+    MovieGenresComponent,
+    MoviesListComponent,
+    TvshowListComponent,
+    MovieDetailsComponent,
+    TvshowDetailsComponent,
+    PeopleDetailsComponent,
+    PeopleListComponent
   ],
   imports: [
     BrowserModule,

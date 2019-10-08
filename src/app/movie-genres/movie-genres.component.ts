@@ -4,11 +4,12 @@ import { Genre } from '../models/movie.model';
 import { GenresRequest } from '../models/request.model';
 
 @Component({
-  selector: 'app-genre-movies',
-  templateUrl: './genre-movies.component.html',
-  styleUrls: ['./genre-movies.component.scss']
+  selector: 'app-movie-genres',
+  templateUrl: './movie-genres.component.html',
+  styleUrls: ['./movie-genres.component.scss']
 })
-export class GenreMoviesComponent implements OnInit {
+
+export class MovieGenresComponent implements OnInit {
 
   genresRequest: GenresRequest;
   listGenres: Genre[];
