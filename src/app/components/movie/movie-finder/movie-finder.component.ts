@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviedbService } from '../services/moviedb.service';
-import { Genre } from '../models/movie.model';
-import { GenresRequest } from '../models/request.model';
+import { MoviedbService } from '../../../services/moviedb.service';
+import { Genre } from '../../../models/movie.model';
+import { GenresRequest } from '../../../models/request.model';
 
 @Component({
-  selector: 'app-genre-movies',
-  templateUrl: './genre-movies.component.html',
-  styleUrls: ['./genre-movies.component.scss']
+  selector: 'app-movie-finder',
+  templateUrl: './movie-finder.component.html',
+  styleUrls: ['./movie-finder.component.scss']
 })
-export class GenreMoviesComponent implements OnInit {
+
+export class MovieFinderComponent implements OnInit {
 
   genresRequest: GenresRequest;
   listGenres: Genre[];
