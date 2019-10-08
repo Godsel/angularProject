@@ -16,6 +16,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { TvshowDetailsComponent } from './tvshow-details/tvshow-details.component';
 import { PeopleDetailsComponent } from './people-details/people-details.component';
 import { PeopleListComponent } from './people-list/people-list.component';
+import { CarouselsComponent } from './carousels/carousels.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PeopleListComponent } from './people-list/people-list.component';
     MovieDetailsComponent,
     TvshowDetailsComponent,
     PeopleDetailsComponent,
-    PeopleListComponent
+    PeopleListComponent,
+    CarouselsComponent
   ],
   imports: [
     BrowserModule,
