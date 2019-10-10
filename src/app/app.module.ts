@@ -17,6 +17,8 @@ import { TvshowDetailsComponent } from './components/tvshow/tvshow-details/tvsho
 import { PeopleDetailsComponent } from './components/people/people-details/people-details.component';
 import { PeopleListComponent } from './components/people/people-list/people-list.component';
 import { HomeCarouselsComponent } from './components/others/home-carousels/home-carousels.component';
+import { TvshowCardComponent } from './components/tvshow/tvshow-card/tvshow-card.component';
+import { PeopleCardComponent } from './components/people/people-card/people-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HomeCarouselsComponent } from './components/others/home-carousels/home-
     TvshowDetailsComponent,
     PeopleDetailsComponent,
     PeopleListComponent,
-    HomeCarouselsComponent
+    HomeCarouselsComponent,
+    TvshowCardComponent,
+    PeopleCardComponent
   ],
   imports: [
     BrowserModule,

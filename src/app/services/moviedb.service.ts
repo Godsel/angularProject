@@ -68,6 +68,12 @@ export class MoviedbService {
     return this.httpClient.get(url).pipe(
       map(data => MoviesRequest.adapt(data)),
     );
+  }
 
+  getPopularMovies(): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`;
+    return this.httpClient.get(url).pipe(
+      map(data => MoviesRequest.adapt(data)),
+    );
   }
 }
