@@ -21,10 +21,9 @@
         </div>
         <!--/end left column-->
         <!--/.sidebar-offcanvas-->
-        <div class ="content">
-            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-                <app-movie-card></app-movie-card>
-            </div>
+        <div>
+            <h3 class="orange-text">Search Results</h3>
+            <app-movie-list [movies]="movies"> </app-movie-list>
         </div>
     </div>
 </div>
