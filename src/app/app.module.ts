@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HeaderComponent } from './components/others/header/header.component';
 import { MoviedbService } from './services/moviedb.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +21,6 @@ import { PeopleListComponent } from './components/people/people-list/people-list
 import { HomeCarouselsComponent } from './components/others/home-carousels/home-carousels.component';
 import { TvshowCardComponent } from './components/tvshow/tvshow-card/tvshow-card.component';
 import { PeopleCardComponent } from './components/people/people-card/people-card.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +43,19 @@ import { PeopleCardComponent } from './components/people/people-card/people-card
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
-  providers: [MoviedbService],
+  providers: [MoviedbService, TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

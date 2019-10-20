@@ -7,6 +7,8 @@ export class Movie {
       public title: string,
       public originalTitle: string,
       public posterPath: string,
+      public score: number,
+      public releaseDate: Date,
       public details: MovieDetails,
     ) { }
 
@@ -16,6 +18,8 @@ export class Movie {
         item.title,
         item.original_title,
         item.poster_path,
+        item.vote_average,
+        item.release_date,
         null,
       );
     }
@@ -37,20 +41,26 @@ export class Genre {
 
 export class MovieDetails {
     constructor(
+      public originalLanguage: string,
       public tagline: string,
-      public releaseDate: Date,
       public overview: string,
+      public runtime: number,
       public genres: Genre[],
+      public budget: number,
+      public revenue: number,
       public videoPath: string,
     ) { }
 
     static adapt(item: any): MovieDetails {
       return new MovieDetails(
-        item.results.tagline,
-        item.results.release_date,
-        item.results.overview,
+        item.original_language,
+        item.tagline,
+        item.overview,
+        item.runtime,
         item.genres.map((data: any[]) => Genre.adapt(data)),
-        item.results.videoPath,
+        item.budget,
+        item.revenue,
+        item.videoPath,
       );
     }
   }

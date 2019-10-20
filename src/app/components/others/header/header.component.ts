@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
   isNavbarCollapsed = true;
+  language: string;
+  languageIso: string;
+  languageFlag: string;
+
   constructor(
+    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
+    this.language = this.translateService.currentLang;
+    this.languageIso = this.language.toUpperCase();
+    this.languageFlag = this.language;
+    if (this.language === 'en') {
+      this.languageFlag = 'gb';
+    }
   }
 
+  changeLanguage(language: string) {
+    if (language !== this.language) {
+      this.translateService.use(language);
+      this.ngOnInit();
+    }
+  }
 }

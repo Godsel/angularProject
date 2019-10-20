@@ -12,9 +12,9 @@
 </div>-->
 
 <div *ngIf="movie">
-  <div class="card" style="width: 18rem;">
-      <img src="https://image.tmdb.org/t/p/w300/{{movie.posterPath}}" *ngIf="movie.posterPath" class="card-img-top">
-      <img src="assets/img/Shrek.png" *ngIf="!movie.posterPath">
+  <div class="card" style="width: 24rem;height: 40rem" >
+      <img src="https://image.tmdb.org/t/p/w500/{{movie.posterPath}}" *ngIf="movie.posterPath" class="card-img-top">
+      <img src= "assets/img/no_poster.jpg" *ngIf="!movie.posterPath">
       <div class="card-body">
           <a class="card-block stretched-link text-decoration-none" href></a>
           <h5 class="card-title">{{movie.title}}</h5>

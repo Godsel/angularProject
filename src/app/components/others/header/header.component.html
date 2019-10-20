@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand"><a routerLink="/" routerLinkActive="active">
-        <img src="assets/img/title_gray.png" width = 200 class="d-inline-block align-top" alt="">
+    <a class="navbar-brand"><a routerLink="/home" routerLinkActive="active">
+        <img src="assets/img/title_gray.png" width = 400 class="d-inline-block align-top" alt="">
     </a></a>
     <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,14 +9,32 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link"><a routerLink="/Movies">Movies</a></a>
+            <a  class="nav-link"><a routerLink="/movies"> <p [translate]="'header.cat1'"></p></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/Tvshows">TV Shows</a></a>
+            <a class="nav-link"><a routerLink="/tvshows"><p [translate]="'header.cat2'"></p></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/Actors">Actors</a></a>
+            <a class="nav-link"><a routerLink="/people"><p [translate]="'header.cat3'"></p></a></a>
         </li>
         </ul>
     </div>
+
+    <div ngbDropdown class="d-inline-block" id="listLanguages">
+        <button class="btn btn-outline-primary" id="titleListLanguages" ngbDropdownToggle><span class="flag-icon flag-icon-{{languageFlag}}"> </span> {{languageIso}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="changeLanguage('fr')"> <span class="flag-icon flag-icon-fr"> </span>   FR</button>
+            <button ngbDropdownItem (click)="changeLanguage('en')"> <span class="flag-icon flag-icon-gb"> </span>   EN</button>
+        </div>
+    </div>
+    
+    <!--<form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for a movie..." aria-label="Search">
+        <button class="btn btn-default" type="submit">
+            <img src="assets/img/search.svg" width = 20 class="d-inline-block align-top" alt="">
+        </button>
+    </form>-->
+          
 </nav>
+
+<app-movie-finder></app-movie-finder>
