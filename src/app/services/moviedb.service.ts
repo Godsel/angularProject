@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie, Genre, MovieDetails } from 'src/app/models/movie.model';
 import { MoviesRequest, GenresRequest } from '../models/request.model';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -14,59 +15,61 @@ export class MoviedbService {
 
   private baseUrl = 'https://api.themoviedb.org/3';
 
+  private language: string;
   constructor(
     private httpClient: HttpClient,
-    ) { }
+    private translateService: TranslateService,
+    ) {
+      this.language = translateService.currentLang;
+      this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+        // do something
+        this.language = translateService.currentLang;
+      });
+    }
 
-  searchMovie(searchStr: string): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${searchStr}`;
+  // Movies
+  searchMovie(searchStr: string, language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
     return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data)),
+        map(data => MoviesRequest.adapt(data, 'Search')),
       );
-
-    /*return this.httpClient.get(url).pipe(
-      // Adapt each item in the raw data array
-      map((data: any[]) => data.map(item => this.movieAdapter.adapt(item))),
-    );*/
   }
 
-  getMovieDetails(movie: Movie): Observable <MovieDetails> {
-    const url = `${this.baseUrl}/movie/${movie.id}?api_key=${this.apiKey}`;
+  getMovieDetails(movie: Movie, language: string): Observable <MovieDetails> {
+    const url = `${this.baseUrl}/movie/${movie.id}?api_key=${this.apiKey}&language=${language}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
       map(data => MovieDetails.adapt(data)),
     );
   }
 
-  getInTheaters(): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&region=US`;
+  getInTheaterMovies(language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&region=US&language=${language}`;
     return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data)),
+        map(data => MoviesRequest.adapt(data, 'In Theater')),
       );
-
   }
 
-  getUpComingMovies(): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}&region=US`;
+  getUpComingMovies(language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}&region=US&language=${language}`;
     return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data)),
+      map(data => MoviesRequest.adapt(data, 'Upcoming')),
     );
-
   }
 
-  getMoviesGenres(): Observable <GenresRequest> {
-    const url = `${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=en-US`;
+  getMoviesGenres(language: string): Observable <GenresRequest> {
+    const url = `${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=${language}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
       map(data => GenresRequest.adapt(data)),
     );
   }
 
-  getMoviesByGenre(genre: Genre, page: number): Observable <MoviesRequest> {
+  getMoviesByGenre(genre: Genre, page: number, language: string): Observable <MoviesRequest> {
     // tslint:disable-next-line: max-line-length
-    const url = `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&language=en-US&sort_by=revenue.desc&include_adult=false&with_genres=${genre.id}&page=${page}`;
+    const url = `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&sort_by=revenue.desc&include_adult=false&with_genres=${genre.id}&page=${page}&language=${language}`;
     return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data)),
+      map(data => MoviesRequest.adapt(data, genre.name)),
     );
 
   }

@@ -4,14 +4,16 @@ import { Adapter } from './adapter';
 
 export class MoviesRequest {
     constructor(
+      public typeRequest: string,
       public page: number,
       public totalPages: number,
       public totalResults: number,
       public movies: Movie[],
     ) { }
 
-      static adapt(item: any): MoviesRequest {
+      static adapt(item: any, type: string): MoviesRequest {
         return new MoviesRequest(
+          item.typeRequest = type,
           item.page,
           item.total_pages,
           item.total_results,
