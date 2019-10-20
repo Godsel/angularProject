@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie, Genre, MovieDetails } from 'src/app/models/movie.model';
-import { MoviesRequest, GenresRequest } from '../models/request.model';
+import { Tvshow, TvshowDetails } from 'src/app/models/tvshow.model';
+import { MoviesRequest, GenresRequest, TvshowRequest } from '../models/request.model';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Injectable({
@@ -35,8 +36,8 @@ export class MoviedbService {
       );
   }
 
-  getMovieDetails(movie: Movie, language: string): Observable <MovieDetails> {
-    const url = `${this.baseUrl}/movie/${movie.id}?api_key=${this.apiKey}&language=${language}`;
+  getMovieDetails(movieId: number, language: string): Observable <MovieDetails> {
+    const url = `${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&language=${language}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
       map(data => MovieDetails.adapt(data)),
@@ -73,10 +74,58 @@ export class MoviedbService {
     );
   }
 
-  getPopularMovies(): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`;
+  // Tvshow
+  searchTvshows(searchStr: string, language: string): Observable <TvshowRequest> {
+    const url = `${this.baseUrl}/search/tv?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
     return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data)),
+        map(data => TvshowRequest.adapt(data, 'Search')),
+      );
+  }
+
+  getTopRatedTvshows(page: number, language: string): Observable <TvshowRequest> {
+    const url = '${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}&language=${language}&page=${page}';
+    return this.httpClient.get(url).pipe(
+      map(data => TvshowRequest.adapt(data, 'Top Rated')),
+    );
+  }
+
+  getTvshowDetails(tvshow: Tvshow, language: string): Observable <TvshowDetails> {
+    const url = `${this.baseUrl}/tv/${tvshow.id}?api_key=${this.apiKey}&language=${language}`;
+    return this.httpClient.get(url).pipe(
+      // Adapt each item in the raw data array
+      map(data => TvshowDetails.adapt(data)),
+    );
+  }
+
+  getTvshowsByGenre(genre: Genre, page: number, language: string): Observable <TvshowRequest> {
+    // tslint:disable-next-line: max-line-length
+    const url = `${this.baseUrl}/discover/tv?api_key=${this.apiKey}&sort_by=revenue.desc&include_adult=false&with_genres=${genre.id}&page=${page}&language=${language}`;
+    return this.httpClient.get(url).pipe(
+      map(data => TvshowRequest.adapt(data, genre.name)),
+    );
+  }
+
+  getTvshowsGenres(language: string): Observable <GenresRequest> {
+    const url = `${this.baseUrl}/genre/tv/list?api_key=${this.apiKey}&language=${language}`;
+    return this.httpClient.get(url).pipe(
+      // Adapt each item in the raw data array
+      map(data => GenresRequest.adapt(data)),
+    );
+  }
+
+  getOnAirTvShows(language: string, page: number): Observable <TvshowRequest> {
+    const url = `${this.baseUrl}/tv/on_the_air?api_key=${this.apiKey}&language=${language}&page=${page}`;
+    return this.httpClient.get(url).pipe(
+      // Adapt each item in the raw data array
+      map(data => TvshowRequest.adapt(data, 'On air')),
+    );
+  }
+
+  getPopularTvShows(language: string, page: number): Observable <TvshowRequest> {
+    const url = ` ${this.baseUrl}/tv/popular?api_key=${this.apiKey}&language=${language}&page=${page}`;
+    return this.httpClient.get(url).pipe(
+      // Adapt each item in the raw data array
+      map(data => TvshowRequest.adapt(data, 'Popular')),
     );
   }
 }

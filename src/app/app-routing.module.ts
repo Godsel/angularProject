@@ -7,30 +7,12 @@ import { MovieFinderComponent } from './components/movie/movie-finder/movie-find
 import { MovieDetailsComponent } from './components/movie/movie-details/movie-details.component';
 import { TvshowDetailsComponent } from './components/tvshow/tvshow-details/tvshow-details.component';
 import { PeopleDetailsComponent } from './components/people/people-details/people-details.component';
-
-const routes: Routes = [
-  {
-    path : 'Tvshows',
-    component : TvshowListComponent
-  },
-  {
-    path : 'Movies',
-    component : MovieCardComponent
-  },
-  {
-    path : 'Actors',
-    component : PeopleListComponent
-  },
-  {
-    path : '',
-    component : HomeCarouselsComponent
-  }
-];
+import { TvshowFinderComponent } from './components/tvshow/tvshow-finder/tvshow-finder.component';
 
 const routes: Routes = [
 {
   path : 'tvshows',
-  component : TvshowListComponent
+  component : TvshowFinderComponent
 },
 {
   path : 'movies',
@@ -45,7 +27,8 @@ const routes: Routes = [
   component : HomeCarouselsComponent
 },
 {
-  path : 'movies/:id',
+  // path : 'movies/:id',
+  path : 'details',
   component : MovieDetailsComponent
 },
 {

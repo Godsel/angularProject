@@ -4,7 +4,7 @@ import { Adapter } from './adapter';
 export class Tvshow {
     constructor(
       public id: number,
-      public title: string,
+      public name: string,
       public originalTitle: string,
       public posterPath: string,
       public score: number,
@@ -15,7 +15,7 @@ export class Tvshow {
     static adapt(item: any): Tvshow {
       return new Tvshow(
         item.id,
-        item.title,
+        item.name,
         item.original_title,
         item.poster_path,
         item.vote_average,

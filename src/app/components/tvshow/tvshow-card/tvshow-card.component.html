@@ -1,1 +1,11 @@
-<p>tvshow-card works!</p>
+<!-- <p>tvshow-card works!</p> -->
+<div *ngIf="tvshow">
+    <div class="card" style="width: 24rem;height: 40rem" >
+        <img src="https://image.tmdb.org/t/p/w500/{{tvshow.posterPath}}" *ngIf="tvshow.posterPath" class="card-img-top">
+        <img src= "assets/img/no_poster.jpg" *ngIf="!tvshow.posterPath">
+        <div class="card-body">
+            <a class="card-block stretched-link text-decoration-none" href></a>
+            <h5 class="card-title">{{tvshow.name}}</h5>
+        </div>
+    </div>
+  </div>

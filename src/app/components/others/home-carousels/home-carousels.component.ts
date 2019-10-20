@@ -19,10 +19,10 @@ export class HomeCarouselsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.moviedbService.getPopularMovies().subscribe((res => {
-      this.movieRequest = res;
-      this.movies = this.movieRequest.movies;
-    }));
+    // this.moviedbService.getInTheaterMovies().subscribe((res => {
+    //   this.movieRequest = res;
+    //   this.movies = this.movieRequest.movies;
+    // }));
 
   }
 

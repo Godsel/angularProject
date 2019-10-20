@@ -1,16 +1,3 @@
-<!--<div class="thumbnail">
-    <img src="https://image.tmdb.org/t/p/w300/{{braveheart.posterPath}}" *ngIf="braveheart.posterPath">
-    <img src="assets/img/Shrek.png" *ngIf="!braveheart.posterPath">
-    <div class="caption">
-        <h4 class="text-ellipsis">
-        <a>{{braveheart.title}}</a>
-        </h4>
-        <p>
-        <a>View details &raquo;</a>
-        </p>
-    </div>
-</div>-->
-
 <div *ngIf="movie">
   <div class="card" style="width: 24rem;height: 40rem" >
       <img src="https://image.tmdb.org/t/p/w500/{{movie.posterPath}}" *ngIf="movie.posterPath" class="card-img-top">
@@ -21,22 +8,3 @@
       </div>
   </div>
 </div>
-
-
-<!--<div class="card" style="width: 18rem;">
-        <ngb-carousel *ngIf="images" >
-                <ng-template ngbSlide *ngFor="let image of images">
-                  <div class="picsum-img-wrapper">
-                    <img src="https://image.tmdb.org/t/p/w300/{{image}}" alt="Random slide">
-                  </div>
-                  <div class="carousel-caption">
-                    <h3>No mouse navigation</h3>
-                    <p>This carousel hides navigation arrows and indicators.</p>
-                  </div>
-                </ng-template>
-        </ngb-carousel>
-        <div class="card-body">
-            <a class="card-block stretched-link text-decoration-none" href></a>
-            <h5 class="card-title">{{braveheart.title}}</h5>
-        </div>
-    </div>-->
