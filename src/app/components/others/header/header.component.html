@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand"><a routerLink="/" routerLinkActive="active">
+    <a class="navbar-brand"><a routerLink="/home" routerLinkActive="active">
         <img src="assets/img/title_gray.png" width = 400 class="d-inline-block align-top" alt="">
     </a></a>
     <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,13 +9,13 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a  class="nav-link"><a routerLink="/Movies"> <p [translate]="'header.cat1'"></p></a></a>
+            <a  class="nav-link"><a routerLink="/movies"> <p [translate]="'header.cat1'"></p></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/Tvshows"><p [translate]="'header.cat2'"></p></a></a>
+            <a class="nav-link"><a routerLink="/tvshows"><p [translate]="'header.cat2'"></p></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/Actors"><p [translate]="'header.cat3'"></p></a></a>
+            <a class="nav-link"><a routerLink="/people"><p [translate]="'header.cat3'"></p></a></a>
         </li>
         </ul>
     </div>
