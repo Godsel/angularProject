@@ -127,17 +127,17 @@ export class MoviedbService {
   }
 
   // Tvshow
-  searchTvshows(searchStr: string, language: string): Observable <TvshowRequest> {
-    const url = `${this.baseUrl}/search/tv?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
+  searchTvshows(searchStr: string, page: number, language: string): Observable <TvshowRequest> {
+    const url = `${this.baseUrl}/search/tv?api_key=${this.apiKey}&query=${searchStr}&page=${page}&language=${language}`;
     return this.httpClient.get(url).pipe(
-        map(data => TvshowRequest.adapt(data, 'Search')),
+        map(data => TvshowRequest.adapt(data, 'Search', searchStr)),
       );
   }
 
   getTopRatedTvshows(page: number, language: string): Observable <TvshowRequest> {
     const url = `${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}&language=${language}&page=${page}`;
     return this.httpClient.get(url).pipe(
-      map(data => TvshowRequest.adapt(data, 'Top Rated')),
+      map(data => TvshowRequest.adapt(data, 'Top Rated', '')),
     );
   }
 
@@ -153,7 +153,7 @@ export class MoviedbService {
     // tslint:disable-next-line: max-line-length
     const url = `${this.baseUrl}/discover/tv?api_key=${this.apiKey}&sort_by=revenue.desc&include_adult=false&with_genres=${genre.id}&page=${page}&language=${language}`;
     return this.httpClient.get(url).pipe(
-      map(data => TvshowRequest.adapt(data, genre.name)),
+      map(data => TvshowRequest.adapt(data, 'By Genre', genre.name)),
     );
   }
 
@@ -169,7 +169,7 @@ export class MoviedbService {
     const url = `${this.baseUrl}/tv/on_the_air?api_key=${this.apiKey}&language=${language}&page=${page}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
-      map(data => TvshowRequest.adapt(data, 'On air')),
+      map(data => TvshowRequest.adapt(data, 'On air', '')),
     );
   }
 
@@ -177,7 +177,7 @@ export class MoviedbService {
     const url = ` ${this.baseUrl}/tv/popular?api_key=${this.apiKey}&language=${language}&page=${page}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
-      map(data => TvshowRequest.adapt(data, 'Popular')),
+      map(data => TvshowRequest.adapt(data, 'Popular', '')),
     );
   }
 }

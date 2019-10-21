@@ -3,8 +3,6 @@ import { MoviedbService } from '../../../services/moviedb.service';
 import { Genre, Movie } from '../../../models/movie.model';
 import { GenresRequest, MoviesRequest } from '../../../models/request.model';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { debounceTime, distinctUntilChanged, map, tap, switchMap, catchError } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-finder',
