@@ -5,16 +5,18 @@ import { Tvshow } from './tvshow.model';
 
 export class MoviesRequest {
     constructor(
-      public typeRequest: string,
+      public requestType: string,
+      public requestAssertion: string,
       public page: number,
       public totalPages: number,
       public totalResults: number,
       public movies: Movie[],
     ) { }
 
-      static adapt(item: any, type: string): MoviesRequest {
+      static adapt(item: any, type: string, assertion: string): MoviesRequest {
         return new MoviesRequest(
-          item.typeRequest = type,
+          type,
+          assertion,
           item.page,
           item.total_pages,
           item.total_results,

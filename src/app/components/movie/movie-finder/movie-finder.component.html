@@ -1,29 +1,63 @@
+<div class="divider-10"></div>
 <div class="container-fluid app-container">
     <div class="row">
-        <div class="col-sm-1">
-            <div class="sidebar-nav"></div>
-                <div class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                          <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button> -->
+        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isMenuCollapsed = !isMenuCollapsed" data-target="#movies-cat">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
-                <div class="sidenav">
-                    <div class="panel-heading">Movies Category</div>
-                    <ul class="nav nav-stacked">
-                            <a class="list-group-item" *ngFor="let genre of listGenres">{{genre.name}}</a>
-                    </ul>
+                
+                
+                <div row>
+                    <div [ngbCollapse]= "isMenuCollapsed" class="collapse navbar-collapse" id="movies-cat">
+                        <ul class="nav nav-stacked">
+                            <div class="panel-heading" type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" > <p translate>moviefinder.genreHeader</p>
+                            </div>
+                            <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                                <li class="button" type="button" (click)="getMoviesByGenre(g.name, 1, language)" class="list-group-item" *ngFor="let g of listGenres"> 
+                                    <a [class.active]="g===selectedGenre" (click)="selectedGenre=g" >{{g.name}}</a> 
+                                </li>  
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </nav>
         </div>
         <!--/end left column-->
-        <!--/.sidebar-offcanvas-->
-        <div>
-            <h3 class="orange-text">Search Results</h3>
-            <app-movie-list [movies]="movies"> </app-movie-list>
+        <!--/.sidebar-offcanvas--> 
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+            
+                <form>
+                    <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" [placeholder]="'moviefinder.searchPlaceHolder' | translate" [(ngModel)]="searchStr" name="searchStr" (keyup.enter)="searchMovie(searchStr, 1, language)">
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)="searchMovie(searchStr, 1, language)">Go!</button>
+                        </span>
+                    </div>
+                    </div>
+                </form>
+                <!-- /input-group -->
+                
+                
+            
+            <div *ngIf="movieRequest">
+                <h3 class="orange-text" translate [translateParams]="{type: movieRequest.requestType, detail: movieRequest.requestAssertion}">moviefinder.results</h3>
+                <app-movie-list [movies]="movies"> </app-movie-list>  
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="divider-40"></div>
+    <div class="row d-flex justify-content-center">
+        <div *ngIf="movieRequest">
+                <div *ngIf="movieRequest.totalPages != 1 && movieRequest.totalPages">
+                    <ngb-pagination (pageChange)="onPageChange($event)" id="pagination" [collectionSize]="movieRequest.totalPages*10" [(page)]="page" [maxSize]= "10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                </div>
         </div>
     </div>
 </div>

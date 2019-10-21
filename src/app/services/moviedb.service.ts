@@ -29,11 +29,17 @@ export class MoviedbService {
     }
 
   // Movies
-  searchMovie(searchStr: string, language: string): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
-    return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'Search')),
+  searchMovie(searchStr: string, page: number, language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${searchStr}&page=${page}&language=${language}`;
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Search', searchStr)),
       );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Recherche', searchStr)),
+      );
+    }
   }
 
   getMovieDetails(movieId: string, language: string): Observable <MovieDetails> {
@@ -44,18 +50,30 @@ export class MoviedbService {
     );
   }
 
-  getInTheaterMovies(language: string): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&region=US&language=${language}`;
-    return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'In Theater')),
+  getInTheaterMovies(page: number, language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&page=${page}&region=US&language=${language}`;
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'In Theater', null)),
       );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'En Salles', null)),
+      );
+    }
   }
 
-  getUpComingMovies(language: string): Observable <MoviesRequest> {
-    const url = `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}&region=US&language=${language}`;
-    return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data, 'Upcoming')),
-    );
+  getUpComingMovies(page: number, language: string): Observable <MoviesRequest> {
+    const url = `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}&page=${page}&region=US&language=${language}`;
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Upcoming', null)),
+      );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Prochainement', null)),
+      );
+    }
   }
 
   getMoviesGenres(language: string): Observable <GenresRequest> {
@@ -69,17 +87,26 @@ export class MoviedbService {
   getMoviesByGenre(genre: Genre, page: number, language: string): Observable <MoviesRequest> {
     // tslint:disable-next-line: max-line-length
     const url = `${this.baseUrl}/discover/movie?api_key=${this.apiKey}&sort_by=revenue.desc&include_adult=false&with_genres=${genre.id}&page=${page}&language=${language}`;
-    return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data, genre.name)),
-    );
-  }
-
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'By Genre', genre.name)),
+      );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Par Genre', genre.name)),
+      );
+    }
   // Tvshow
   searchTvshows(searchStr: string, language: string): Observable <TvshowRequest> {
     const url = `${this.baseUrl}/search/tv?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
     return this.httpClient.get(url).pipe(
         map(data => TvshowRequest.adapt(data, 'Search')),
       );
+    return this.httpClient.get(url).pipe(
+      map(data => MoviesRequest.adapt(data, genre.name)),
+    );
+
+  }
   }
 
   getTopRatedTvshows(page: number, language: string): Observable <TvshowRequest> {
