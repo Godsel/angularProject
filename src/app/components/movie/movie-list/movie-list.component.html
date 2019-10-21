@@ -1,7 +1,7 @@
 <div class="row is-flex">
     <!-- <div class="col-sm-6 col-md-4 col-lg-3 col-xs-6" *ngFor="let movie of movies; let i = index;"> -->
     <div class="col-sm-6 col-md-4 col-lg-3 col-xs-6" *ngFor="let movie of movies; let i = index;"  >
-            <a  routerLink="/details">
+            <a  routerLink="/movies/{{movie.id}}">
         <app-movie-card [movie]="movie"></app-movie-card>
     </a>
 </div>

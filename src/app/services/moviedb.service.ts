@@ -36,7 +36,7 @@ export class MoviedbService {
       );
   }
 
-  getMovieDetails(movieId: number, language: string): Observable <MovieDetails> {
+  getMovieDetails(movieId: string, language: string): Observable <MovieDetails> {
     const url = `${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&language=${language}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array

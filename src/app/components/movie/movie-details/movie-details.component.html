@@ -1,2 +1,5 @@
-<p>movie-details works!</p>
-
+<img src="https://image.tmdb.org/t/p/w500/{{movieDetails.posterPath}}" *ngIf="movieDetails.posterPath" class="card-img-top">
+      <img src= "assets/img/no_poster.jpg" *ngIf="!movieDetails.posterPath">
+<p>{{movieDetails.title}}</p>
+<p>{{movieDetails.overview}}</p>
+<p>{{movieDetails.releaseDate}}</p>

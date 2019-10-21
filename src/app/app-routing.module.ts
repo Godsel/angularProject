@@ -27,8 +27,7 @@ const routes: Routes = [
   component : HomeCarouselsComponent
 },
 {
-  // path : 'movies/:id',
-  path : 'details',
+  path : 'movies/:id',
   component : MovieDetailsComponent
 },
 {

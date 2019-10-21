@@ -3,6 +3,7 @@ import { MoviedbService } from '../../../services/moviedb.service';
 import { Genre, Movie, MovieDetails } from '../../../models/movie.model';
 import { GenresRequest, MoviesRequest } from '../../../models/request.model';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,30 +12,29 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  // movieDetails: MovieDetails;
-  // // movieSelected: Movie;
-  // language: string = 'en-US';
-  // movieId: number;
+  movieDetails: MovieDetails;
+  // movieSelected: Movie;
+  language: string = 'en-US';
+  movieId: string;
 
   constructor(
     private moviedbService: MoviedbService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private router: ActivatedRoute
     ) {
-      // this.language = translateService.currentLang;
-      // this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-      //   // do something
-      //   this.language = translateService.currentLang;
-      //   // this.movieId = Id;
-      //   this.ngOnInit();
-      // });
+      this.language = translateService.currentLang;
+      this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.language = translateService.currentLang;
+      });
     }
 
   ngOnInit() {
-    // this.moviedbService.getMovieDetails(this.movieId, this.language).subscribe((res => {
-    //   this.movieDetails = res;
-    //   // this.details = this.movieSelected.details;
-    //   console.log(this.movieDetails);
-    // }));
+    this.movieId = this.router.snapshot.paramMap.get('id');
+    console.log(this.movieId);
+    this.moviedbService.getMovieDetails(this.movieId, this.language).subscribe((res => {
+      this.movieDetails = res;
+      console.log(this.movieDetails);
+    }));
   }
 
 }

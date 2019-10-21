@@ -48,7 +48,9 @@ export class MovieDetails {
       public genres: Genre[],
       public budget: number,
       public revenue: number,
-      public videoPath: string,
+      public posterPath: string,
+      public title: string,
+      public releaseDate: string
     ) { }
 
     static adapt(item: any): MovieDetails {
@@ -60,7 +62,9 @@ export class MovieDetails {
         item.genres.map((data: any[]) => Genre.adapt(data)),
         item.budget,
         item.revenue,
-        item.videoPath,
+        item.poster_path,
+        item.title,
+        item.release_date,
       );
     }
   }
