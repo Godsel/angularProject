@@ -1,6 +1,33 @@
-<p>carousels works!</p>
-<div>
-    <app-movie-list [movies]="movies"> </app-movie-list>
+<div class="container-fluid">
+    <div class="row">   
+        <div class="col-sm  text-center">
+            <div class="carouselcontainer">    
+            <h2 class="pb-2">Movies in theaters</h2>
+            <ngb-carousel data-interval="10000">
+            <ng-template ngbSlide *ngFor="let item of movies">
+                <a  routerLink="/movies/{{item.id}}">
+                <img src="https://image.tmdb.org/t/p/w300/{{item.posterPath}}">
+                <div class="carousel-caption">
+                </div>
+                </a>
+            </ng-template>
+            </ngb-carousel>
+            </div>
+        </div>
+    
+        <div class="col-sm text-center">
+        <div class="carouselcontainer">
+            <h2 class="pb-2">TV Shows on air</h2>
+            <ngb-carousel data-interval="10000">
+            <ng-template ngbSlide *ngFor="let item of tvshows">
+                <a  routerLink="/tvshows/{{item.id}}">
+                <img src="https://image.tmdb.org/t/p/w300/{{item.posterPath}}">
+                <div class="carousel-caption">
+                </div>
+                </a>
+            </ng-template>
+            </ngb-carousel>
+            </div>
+        </div>
+    </div>
 </div>
-
-  
