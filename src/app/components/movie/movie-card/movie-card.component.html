@@ -1,10 +1,10 @@
 <div *ngIf="movie">
-  <div class="card" style="width: 24rem;height: 40rem" >
-      <img src="https://image.tmdb.org/t/p/w500/{{movie.posterPath}}" *ngIf="movie.posterPath" class="card-img-top">
-      <img src= "assets/img/no_poster.jpg" *ngIf="!movie.posterPath">
-      <div class="card-body">
-          <a class="card-block stretched-link text-decoration-none" href></a>
-          <h5 class="card-title">{{movie.title}}</h5>
-      </div>
+    <div class="card" style="height: 26rem; padding: 10px;" >
+        <img src="https://image.tmdb.org/t/p/w500/{{movie.posterPath}}" style="height: 20rem;"*ngIf="movie.posterPath" class="card-img-top">
+        <img src= "assets/img/no_poster.jpg" style="height: 20rem;" *ngIf="!movie.posterPath">
+        <div class="card-body">
+            <a class="card-block stretched-link text-decoration-none" href></a>
+            <h5 class="card-title">{{movie.title}}</h5>
+        </div>
+    </div>
   </div>
-</div>
