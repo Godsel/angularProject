@@ -25,20 +25,26 @@ export class HomeCarouselsComponent implements OnInit {
   ) {
       this.page = 1;
       this.language = translateService.currentLang;
+      this.ngOnInit();
   }
 
   ngOnInit() {
+    this.getInTheaterMovies(this.page, this.language);
+    this.getOnAirTvShows(this.page, this.language);
+  }
 
-    this.moviedbService.getInTheaterMovies(this.page, this.language).subscribe((res => {
+  private getInTheaterMovies(page: number, language: string) {
+    this.moviedbService.getInTheaterMovies(page, language).subscribe((res => {
       this.movieRequest = res;
       this.movies = this.movieRequest.movies;
     }));
+  }
 
-    this.moviedbService.getOnAirTvShows(this.language, this.page).subscribe((res => {
+  private getOnAirTvShows(page: number, language: string) {
+    this.moviedbService.getOnAirTvShows(language, page).subscribe((res => {
       this.tvshowRequest = res;
       this.tvshows = this.tvshowRequest.tvshows;
     }));
-
   }
 
 }
