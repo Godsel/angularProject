@@ -3,5 +3,11 @@
         "cat1": "Movies",
         "cat2": "TV Shows",
         "cat3": "People"
+    },
+
+    "moviefinder": {
+        "genreHeader": "Movie Categories",
+        "searchPlaceHolder": "Search for movies...",
+        "results": "{{type}} '{{detail}}' Results"
     }
 }
