@@ -1,26 +1,3 @@
-<!-- <div class="container-fluid app-container">
-    <div class="row">
-        <div class="col-sm-1">
-            <div class="sidebar-nav"></div>
-                <div class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                </div>
-                <div class="sidenav">
-                    <div class="panel-heading">Tv Shows Category</div>
-                    <ul class="nav nav-stacked">
-                            <a class="list-group-item" *ngFor="let genre of listGenres">{{genre.name}}</a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h3 class="orange-text">Search Results</h3>
-            <app-tvshow-list [tvshows]="tvshows"> </app-tvshow-list>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="divider-10"></div>
 <div class="container-fluid app-container">
     <div class="row">
@@ -85,11 +62,6 @@
                                                 <li class="button" type="button" (click)="getPopularTvShows(page, language)" class="list-group-item"> 
                                                     <a translate>tvshowfinder.popular</a> 
                                                 </li>  
-
-                                                <!-- <li class="button" type="button" (click)="getUpComingtvshows(page, language)" class="list-group-item"> 
-                                                        <a translate>tvshowfinder.upcoming</a> 
-                                                </li> -->
-
                                                 <li class="button" type="button" (click)="getTopRatedTvshows(page, language)" class="list-group-item"> 
                                                         <a translate>tvshowfinder.topRated</a> 
                                                 </li>
