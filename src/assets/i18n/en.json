@@ -38,6 +38,7 @@
         "onAir": "On Air",
         "popular": "Popular",
         "topRated": "Top Rated",
-        "tvshowfinder.results": "{{type}} '{{detail}}' Results"
+        "results": "{{type}} '{{detail}}' Results",
+        "searchPlaceHolder": "Search for tv show..."
     }
 }
