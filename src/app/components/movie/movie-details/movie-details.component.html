@@ -3,10 +3,10 @@
           <div class="col-sm">
                 <div *ngIf="movieDetails">
                         <h1>{{movieDetails.title}}</h1>
-                            <div class="card" style="width: 20rem;height: 30rem" >
+                            <div style="width: 20rem;height: 30rem" >
                                     <img src="https://image.tmdb.org/t/p/w500/{{movieDetails.posterPath}}" *ngIf="movieDetails.posterPath" class="card-img-top">
                                     <img src= "assets/img/no_poster.jpg" *ngIf="!movieDetails.posterPath">
-                                
+                               
                             </div>
                           </div>
           </div>

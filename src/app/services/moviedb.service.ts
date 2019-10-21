@@ -96,17 +96,14 @@ export class MoviedbService {
         map(data => MoviesRequest.adapt(data, 'Par Genre', genre.name)),
       );
     }
+  }
+
   // Tvshow
   searchTvshows(searchStr: string, language: string): Observable <TvshowRequest> {
     const url = `${this.baseUrl}/search/tv?api_key=${this.apiKey}&query=${searchStr}&language=${language}`;
     return this.httpClient.get(url).pipe(
         map(data => TvshowRequest.adapt(data, 'Search')),
       );
-    return this.httpClient.get(url).pipe(
-      map(data => MoviesRequest.adapt(data, genre.name)),
-    );
-
-  }
   }
 
   getTopRatedTvshows(page: number, language: string): Observable <TvshowRequest> {
