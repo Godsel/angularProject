@@ -1,5 +1,5 @@
 <!-- <p>tvshow-card works!</p> -->
-<div *ngIf="tvshow">
+<!-- <div *ngIf="tvshow">
     <div class="card" style="width: 24rem;height: 40rem" >
         <img src="https://image.tmdb.org/t/p/w500/{{tvshow.posterPath}}" *ngIf="tvshow.posterPath" class="card-img-top">
         <img src= "assets/img/no_poster.jpg" *ngIf="!tvshow.posterPath">
@@ -8,4 +8,15 @@
             <h5 class="card-title">{{tvshow.name}}</h5>
         </div>
     </div>
-  </div>
+  </div> -->
+
+  <div *ngIf="tvshow">
+        <div class="card" style="height: 26rem; padding: 10px;" >
+            <img src="https://image.tmdb.org/t/p/w500/{{tvshow.posterPath}}" style="height: 20rem;"*ngIf="tvshow.posterPath" class="card-img-top">
+            <img src= "assets/img/no_poster.jpg" style="height: 20rem;" *ngIf="!tvshow.posterPath">
+            <div class="card-body">
+                <a class="card-block stretched-link text-decoration-none" href></a>
+                <h5 class="card-title">{{tvshow.name}}</h5>
+            </div>
+        </div>
+      </div>
