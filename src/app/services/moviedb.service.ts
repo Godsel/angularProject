@@ -54,11 +54,11 @@ export class MoviedbService {
     const url = `${this.baseUrl}/movie/now_playing?api_key=${this.apiKey}&page=${page}&region=US&language=${language}`;
     if (language === 'en') {
       return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'In Theater', null)),
+        map(data => MoviesRequest.adapt(data, 'In Theater', '')),
       );
     } else {
       return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'En Salles', null)),
+        map(data => MoviesRequest.adapt(data, 'En Salles', '')),
       );
     }
   }
@@ -67,11 +67,11 @@ export class MoviedbService {
     const url = `${this.baseUrl}/movie/upcoming?api_key=${this.apiKey}&page=${page}&region=US&language=${language}`;
     if (language === 'en') {
       return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'Upcoming', null)),
+        map(data => MoviesRequest.adapt(data, 'Upcoming', '')),
       );
     } else {
       return this.httpClient.get(url).pipe(
-        map(data => MoviesRequest.adapt(data, 'Prochainement', null)),
+        map(data => MoviesRequest.adapt(data, 'Prochainement', '')),
       );
     }
   }
@@ -94,6 +94,34 @@ export class MoviedbService {
     } else {
       return this.httpClient.get(url).pipe(
         map(data => MoviesRequest.adapt(data, 'Par Genre', genre.name)),
+      );
+    }
+  }
+
+  getPopularMovies(page: number, language: string): Observable <MoviesRequest> {
+    // tslint:disable-next-line: max-line-length
+    const url = `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&include_adult=false&page=${page}&language=${language}`;
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Popular', '')),
+      );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Populaires', '')),
+      );
+    }
+  }
+
+  getTopRatedMovies(page: number, language: string): Observable <MoviesRequest> {
+    // tslint:disable-next-line: max-line-length
+    const url = `${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&page=${page}&language=${language}`;
+    if (language === 'en') {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Top Rated', '')),
+      );
+    } else {
+      return this.httpClient.get(url).pipe(
+        map(data => MoviesRequest.adapt(data, 'Mieux notés', '')),
       );
     }
   }
