@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
+import { Tvshow } from '../../../models/tvshow.model';
 
 @Component({
   selector: 'app-tvshow-card',
   templateUrl: './tvshow-card.component.html',
   styleUrls: ['./tvshow-card.component.scss']
 })
-export class TvshowCardComponent implements OnInit {
+export class TvshowCardComponent {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  @Input()
+    tvshow: Tvshow;
 
 }

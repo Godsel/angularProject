@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Tvshow } from 'src/app/models/tvshow.model';
 
 @Component({
   selector: 'app-tvshow-list',
   templateUrl: './tvshow-list.component.html',
   styleUrls: ['./tvshow-list.component.scss']
 })
-export class TvshowListComponent implements OnInit {
+export class TvshowListComponent {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  @Input()
+  tvshows: Tvshow[];
 
 }
