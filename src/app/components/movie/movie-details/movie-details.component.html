@@ -1,5 +1,22 @@
-<img src="https://image.tmdb.org/t/p/w500/{{movieDetails.posterPath}}" *ngIf="movieDetails.posterPath" class="card-img-top">
-      <img src= "assets/img/no_poster.jpg" *ngIf="!movieDetails.posterPath">
-<p>{{movieDetails.title}}</p>
-<p>{{movieDetails.overview}}</p>
-<p>{{movieDetails.releaseDate}}</p>
+<div class="container">
+        <div class="row">
+          <div class="col-sm">
+                <div *ngIf="movieDetails">
+                        <h1>{{movieDetails.title}}</h1>
+                            <div class="card" style="width: 20rem;height: 30rem" >
+                                    <img src="https://image.tmdb.org/t/p/w500/{{movieDetails.posterPath}}" *ngIf="movieDetails.posterPath" class="card-img-top">
+                                    <img src= "assets/img/no_poster.jpg" *ngIf="!movieDetails.posterPath">
+                                
+                            </div>
+                          </div>
+          </div>
+          <div class="col-sm">
+              <ul class="list-group list-group-horizontal" >
+                    <li class="list-group-item list-group-item" *ngFor="let genre of movieDetails.genres">{{genre.name}}</li></ul>
+              <h2>Résumé</h2>
+                <p>{{movieDetails.overview}}</p>
+                <h2>Date de sortie</h2>
+                <p>{{movieDetails.releaseDate}}</p>
+          </div>
+        </div>
+      </div>
