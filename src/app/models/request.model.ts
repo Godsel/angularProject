@@ -39,16 +39,18 @@ export class GenresRequest {
 
 export class TvshowRequest {
   constructor(
-    public typeRequest: string,
+    public requestType: string,
+    public requestAssertion: string,
     public page: number,
     public totalPages: number,
     public totalResults: number,
     public tvshows: Tvshow[],
   ) { }
 
-    static adapt(item: any, type: string): TvshowRequest {
+    static adapt(item: any, type: string, assertion: string): TvshowRequest {
       return new TvshowRequest(
-        item.typeRequest = type,
+        type,
+        assertion,
         item.page,
         item.total_pages,
         item.total_results,

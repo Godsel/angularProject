@@ -8,19 +8,19 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a  class="nav-link"><a routerLink="/movies"> <p [translate]="'header.cat1'"></p></a></a>
+            <a  class="nav-link"><a routerLink="/movies"> <h3 [translate]="'header.cat1'"></h3></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/tvshows"><p [translate]="'header.cat2'"></p></a></a>
+            <a class="nav-link"><a routerLink="/tvshows"><h3 [translate]="'header.cat2'"></h3></a></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"><a routerLink="/people"><p [translate]="'header.cat3'"></p></a></a>
+            <a class="nav-link"><a routerLink="/people"><h3 [translate]="'header.cat3'"></h3></a></a>
         </li>
         </ul>
     </div>
 
-    <div ngbDropdown class="d-inline-block" id="listLanguages">
-        <button class="btn btn-outline-primary" id="titleListLanguages" ngbDropdownToggle><span class="flag-icon flag-icon-{{languageFlag}}"> </span> {{languageIso}}</button>
+    <div ngbDropdown class="d-inline-block" id="listLanguages" width=500>
+        <button class="btn btn-outline-primary" id="titleListLanguages" style="height:50px;width:100px" ngbDropdownToggle><span class="flag-icon flag-icon-{{languageFlag}}"> </span> {{languageIso}}</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="changeLanguage('fr')"> <span class="flag-icon flag-icon-fr"> </span>   FR</button>
             <button ngbDropdownItem (click)="changeLanguage('en')"> <span class="flag-icon flag-icon-gb"> </span>   EN</button>

@@ -2,7 +2,7 @@
 <div class="container-fluid app-container">
     <div class="row">
         <div class="col-md-2">
-            <h1 translate>moviefinder.pageName</h1>
+            <h1 class="pagetitle" translate>moviefinder.pageName</h1> 
         </div>
         <div class="col-md-5">
             <div class="row-flex justify-content-center">
@@ -23,10 +23,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-1">
+        <div class="col">
             <div class=row>
                 <div class=col>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+                    <nav class="navbar navbar-expand-lg navbar-light" role="navigation">
                             <div class="navbar-header">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isMenuCollapsed = !isMenuCollapsed" data-target="#movies-cat">
                                         <span class="navbar-toggler-icon"></span>
@@ -47,8 +47,8 @@
                                         </div>
                                     </div>
                                     <div class="divider-10"></div>
-                                    <div clas="row">
-                                        <div class="col">
+                                    <div class="row">
+                                            <div class="col tofix">
                                             <div class="panel-heading" type="button" class="btn btn-outline-primary" (click)="isOthersCollapsed = !isOthersCollapsed"
                                             [attr.aria-expanded]="!isOthersCollapsed" aria-controls="collapseExample" > <p translate>moviefinder.othersHeader</p>
                                             </div>
@@ -86,18 +86,15 @@
                 <app-movie-list [movies]="movies"> </app-movie-list>  
             </div>
         </div>
-    <div>
-            <!--</nav>-->
-        <!--/end left column-->
-        <!--/.sidebar-offcanvas--> 
-    <div class="row d-flex justify-content-center">
-        <div class="col justify-content-center">
+        </div>
+
+    <div class="row">
+        <div class="col">
             <div class="divider-40"></div>
             <div *ngIf="movieRequest">
-                    <div *ngIf="movieRequest.totalPages != 1 && movieRequest.totalPages">
-                        <ngb-pagination (pageChange)="onPageChange($event)" id="pagination" [collectionSize]="movieRequest.totalPages*10" [(page)]="page" [maxSize]= "10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                    <div *ngIf="movieRequest.totalPages != 1 && movieRequest.totalPages text-center">
+                        <ngb-pagination class="d-flex justify-content-center" (pageChange)="onPageChange($event)" id="pagination" [collectionSize]="movieRequest.totalPages*10" [(page)]="page" [maxSize]= "10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
                     </div>
             </div>
         </div>  
     </div>
-</div>

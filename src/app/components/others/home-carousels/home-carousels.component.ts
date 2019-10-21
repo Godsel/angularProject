@@ -8,7 +8,7 @@ import { Tvshow } from 'src/app/models/tvshow.model';
 @Component({
   selector: 'app-home-carousels',
   templateUrl: './home-carousels.component.html',
-  styleUrls: ['./home-carousels.component.scss']
+  styleUrls: ['./home-carousels.component.scss'],
 })
 export class HomeCarouselsComponent implements OnInit {
 

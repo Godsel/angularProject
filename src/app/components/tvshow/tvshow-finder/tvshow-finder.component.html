@@ -1,5 +1,4 @@
-<!-- <p>tvshow-finder works!</p> -->
-<div class="container-fluid app-container">
+<!-- <div class="container-fluid app-container">
     <div class="row">
         <div class="col-sm-1">
             <div class="sidebar-nav"></div>
@@ -14,12 +13,113 @@
                 </div>
             </div>
         </div>
-        <!--/end left column-->
-        <!--/.sidebar-offcanvas-->
         <div>
             <h3 class="orange-text">Search Results</h3>
             <app-tvshow-list [tvshows]="tvshows"> </app-tvshow-list>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<div class="divider-10"></div>
+<div class="container-fluid app-container">
+    <div class="row">
+        <div class="col-md-2">
+            <h1 translate>tvshowfinder.pageName</h1>
+        </div>
+        <div class="col-md-5">
+            <div class="row-flex justify-content-center">
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" [placeholder]="'tvshowfinder.searchPlaceHolder' | translate" [(ngModel)]="searchStr" name="searchStr" (keyup.enter)="searchTvShow(searchStr, 1, language)">
+                                <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" (click)="searchTvShow(searchStr, 1, language)">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class=row>
+                <div class=col>
+                    <nav class="navbar navbar-expand-lg navbar-light" role="navigation">
+                            <div class="navbar-header">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isMenuCollapsed = !isMenuCollapsed" data-target="#tvshows-cat">
+                                        <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                            <div [ngbCollapse]= "isMenuCollapsed" class="collapse navbar-collapse" id="tvshows-cat">
+                                <ul class="nav nav-stacked">
+                                    <div class ="row">
+                                        <div class="col">
+                                            <div class="panel-heading" type="button" class="btn btn-outline-primary" (click)="isGenresCollapsed = !isGenresCollapsed"
+                                            [attr.aria-expanded]="!isGenresCollapsed" aria-controls="collapseExample" > <p translate>tvshowfinder.genreHeader</p>
+                                            </div>
+                                            <div id="collapseExample" [ngbCollapse]="isGenresCollapsed">
+                                                    <li class="button" type="button" (click)="getTvshowsByGenre(g.name, 1, language)" class="list-group-item" *ngFor="let g of listGenres"> 
+                                                        <a [class.active]="g===selectedGenre" (click)="selectedGenre=g" >{{g.name}}</a> 
+                                                    </li>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divider-10"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="panel-heading" type="button" class="btn btn-outline-primary" (click)="isOthersCollapsed = !isOthersCollapsed"
+                                            [attr.aria-expanded]="!isOthersCollapsed" aria-controls="collapseExample" > <p translate>tvshowfinder.othersHeader</p>
+                                            </div>
+                                            
+                                            <div id="collapseExample" [ngbCollapse]="isOthersCollapsed">
+                                                
+                                                <li class="button" type="button" (click)="getOnAirTvShows(page, language)" class="list-group-item"> 
+                                                        <a translate>tvshowfinder.onAir</a> 
+                                                </li>
+
+                                                <li class="button" type="button" (click)="getPopularTvShows(page, language)" class="list-group-item"> 
+                                                    <a translate>tvshowfinder.popular</a> 
+                                                </li>  
+
+                                                <!-- <li class="button" type="button" (click)="getUpComingtvshows(page, language)" class="list-group-item"> 
+                                                        <a translate>tvshowfinder.upcoming</a> 
+                                                </li> -->
+
+                                                <li class="button" type="button" (click)="getTopRatedTvshows(page, language)" class="list-group-item"> 
+                                                        <a translate>tvshowfinder.topRated</a> 
+                                                </li>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+            <div *ngIf="tvshowRequest">
+                <h3 class="orange-text" translate [translateParams]="{type: tvshowRequest.requestType, detail: tvshowRequest.requestAssertion}">tvshowfinder.results</h3>
+                <app-tvshow-list [tvshows]="tvshows"> </app-tvshow-list>  
+            </div>
+        </div>
+        </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="divider-40"></div>
+            <div *ngIf="tvshowRequest">
+                    <div *ngIf="tvshowRequest.totalPages != 1 && tvshowRequest.totalPages text-center">
+                        <ngb-pagination class="d-flex justify-content-center" (pageChange)="onPageChange($event)" id="pagination" [collectionSize]="tvshowRequest.totalPages*10" [(page)]="page" [maxSize]= "10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                    </div>
+            </div>
+        </div>  
+    </div>
+
 
