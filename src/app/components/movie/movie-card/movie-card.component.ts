@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie, Genre } from '../../../models/movie.model';
-import { MoviedbService } from '../../../services/moviedb.service';
-import { map } from 'rxjs/operators';
-import { MoviesRequest } from '../../../models/request.model';
+import { Movie } from 'src/app/models/movie.model';
 
 @Component({
   selector: 'app-movie-card',
