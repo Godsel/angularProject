@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TvshowDetailsComponent implements OnInit {
 
   tvshowDetails: TvshowDetails;
-  language: string = 'en-US';
+  language: string;
   tvshowId: string;
 
   constructor(
@@ -20,18 +20,21 @@ export class TvshowDetailsComponent implements OnInit {
     private translateService: TranslateService,
     private router: ActivatedRoute
     ) {
-      this.language = translateService.currentLang;
       this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
         this.language = translateService.currentLang;
+        this.ngOnInit();
       });
+      this.language = translateService.currentLang;
     }
 
   ngOnInit() {
     this.tvshowId = this.router.snapshot.paramMap.get('id');
-    console.log(this.tvshowId);
-    this.moviedbService.getTvshowDetails(this.tvshowId, this.language).subscribe((res => {
+    this.getTvshowDetails(this.tvshowId, this.language);
+  }
+
+  private getTvshowDetails(id: string, language: string) {
+    this.moviedbService.getTvshowDetails(id, language).subscribe((res => {
       this.tvshowDetails = res;
-      console.log(this.tvshowDetails);
     }));
   }
 

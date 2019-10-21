@@ -5,6 +5,11 @@
         "cat3": "Personnes"
     },
 
+    "home": {
+        "first": "En Salles",
+        "second": "Séries du moment"
+    },
+
     "moviefinder": {
         "pageName": "Films",
         "genreHeader": "Genres",
@@ -15,5 +20,16 @@
         "topRated": "Mieux Notés",
         "inTheater": "En Salle",
         "upcoming": "Prochainement"
+    },
+
+    "moviedetails": {
+        "pageName": "Séries",
+        "genreHeader": "Genres",
+        "resume": "Résumé",
+        "releaseDate": "Date de sortie"
+    },
+
+    "others": {
+        "construction": "EN CONSTRUCTION"
     }
 }

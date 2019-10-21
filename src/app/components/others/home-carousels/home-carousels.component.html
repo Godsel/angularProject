@@ -2,7 +2,7 @@
     <div class="row">   
         <div class="col-sm  text-center">
             <div class="carouselcontainer">    
-            <h2 class="pb-2">Movies in theaters</h2>
+            <h2 class="pb-2" translate>home.first</h2>
             <ngb-carousel data-interval="10000">
             <ng-template ngbSlide *ngFor="let item of movies">
                 <a  routerLink="/movies/{{item.id}}">
@@ -17,7 +17,7 @@
     
         <div class="col-sm text-center">
         <div class="carouselcontainer">
-            <h2 class="pb-2">TV Shows on air</h2>
+            <h2 class="pb-2" translate>home.second</h2>
             <ngb-carousel data-interval="10000">
             <ng-template ngbSlide *ngFor="let item of tvshows">
                 <a  routerLink="/tvshows/{{item.id}}">

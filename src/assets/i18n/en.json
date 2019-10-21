@@ -5,6 +5,11 @@
         "cat3": "People"
     },
 
+    "home": {
+        "first": "Movies in Theaters",
+        "second": "TV Shows on Air"
+    },
+
     "moviefinder": {
         "pageName": "Movies",
         "genreHeader": "Movie Categories",
@@ -15,5 +20,16 @@
         "topRated": "Top Rated",
         "inTheater": "In Theater",
         "upcoming": "Upcoming"
+    },
+
+    "moviedetails": {
+        "pageName": "Tv Shows",
+        "genreHeader": "Tv Show Categories",
+        "resume": "Resume",
+        "releaseDate": "Release Date"
+    },
+
+    "others": {
+        "construction": "BUILDING"
     }
 }
