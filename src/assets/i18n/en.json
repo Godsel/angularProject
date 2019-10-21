@@ -23,13 +23,21 @@
     },
 
     "moviedetails": {
-        "pageName": "Tv Shows",
-        "genreHeader": "Tv Show Categories",
         "resume": "Resume",
         "releaseDate": "Release Date"
     },
 
     "others": {
         "construction": "BUILDING"
+    },
+
+    "tvshowfinder": {
+        "pageName": "Tv Shows",
+        "genreHeader": "Tv Show Categories",
+        "othersHeader": "Other Categories",
+        "onAir": "On Air",
+        "popular": "Popular",
+        "topRated": "Top Rated",
+        "tvshowfinder.results": "{{type}} '{{detail}}' Results"
     }
 }

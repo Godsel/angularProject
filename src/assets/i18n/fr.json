@@ -31,5 +31,15 @@
 
     "others": {
         "construction": "EN CONSTRUCTION"
+    },
+
+    "tvshowfinder": {
+        "pageName": "Séries",
+        "genreHeader": "Genres",
+        "othersHeader": "Autres",
+        "onAir": "En ce moment",
+        "popular": "Populaires",
+        "topRated": "Mieux Notés",
+        "tvshowfinder.results": "Résultats : {{type}} '{{detail}}'"
     }
 }
