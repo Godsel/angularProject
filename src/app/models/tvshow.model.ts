@@ -48,7 +48,9 @@ export class TvshowDetails {
       public genres: Genre[],
       public budget: number,
       public revenue: number,
-      public videoPath: string,
+      public posterPath: string,
+      public name: string,
+      public firstAirDate: string
     ) { }
 
     static adapt(item: any): TvshowDetails {
@@ -60,7 +62,9 @@ export class TvshowDetails {
         item.genres.map((data: any[]) => Genre.adapt(data)),
         item.budget,
         item.revenue,
-        item.videoPath,
+        item.poster_path,
+        item.name,
+        item.first_air_date,
       );
     }
   }

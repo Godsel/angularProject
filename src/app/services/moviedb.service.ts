@@ -107,14 +107,14 @@ export class MoviedbService {
   }
 
   getTopRatedTvshows(page: number, language: string): Observable <TvshowRequest> {
-    const url = '${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}&language=${language}&page=${page}';
+    const url = `${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}&language=${language}&page=${page}`;
     return this.httpClient.get(url).pipe(
       map(data => TvshowRequest.adapt(data, 'Top Rated')),
     );
   }
 
-  getTvshowDetails(tvshow: Tvshow, language: string): Observable <TvshowDetails> {
-    const url = `${this.baseUrl}/tv/${tvshow.id}?api_key=${this.apiKey}&language=${language}`;
+  getTvshowDetails(tvshowId: string, language: string): Observable <TvshowDetails> {
+    const url = `${this.baseUrl}/tv/${tvshowId}?api_key=${this.apiKey}&language=${language}`;
     return this.httpClient.get(url).pipe(
       // Adapt each item in the raw data array
       map(data => TvshowDetails.adapt(data)),

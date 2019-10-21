@@ -1,1 +1,23 @@
-<p>tvshow-details works!</p>
+<div class="container">
+        <div class="row">
+          <div class="col-sm">
+                <div *ngIf="tvshowDetails">
+                        <h1>{{tvshowDetails.name}}</h1>
+                            <div style="width: 20rem;height: 30rem" >
+                                    <img src="https://image.tmdb.org/t/p/w500/{{tvshowDetails.posterPath}}" *ngIf="tvshowDetails.posterPath" class="card-img-top">
+                                    <img src= "assets/img/no_poster.jpg" *ngIf="!tvshowDetails.posterPath">
+                               
+                            </div>
+                          </div>
+          </div>
+          <div class="col-sm">
+              <ul class="list-group list-group-horizontal" >
+                    <li class="list-group-item list-group-item" *ngFor="let genre of tvshowDetails.genres">{{genre.name}}</li></ul>
+              <h2>Synopsis</h2>
+                <p>{{tvshowDetails.overview}}</p>
+                <h2>Date de sortie</h2>
+                <p>{{tvshowDetails.firstAirDate}}</p>
+          </div>
+        </div>
+      </div>
+

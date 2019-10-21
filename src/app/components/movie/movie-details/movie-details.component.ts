@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviedbService } from '../../../services/moviedb.service';
-import { Genre, Movie, MovieDetails } from '../../../models/movie.model';
-import { GenresRequest, MoviesRequest } from '../../../models/request.model';
+import { MovieDetails } from '../../../models/movie.model';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
   movieDetails: MovieDetails;
-  // movieSelected: Movie;
   language: string = 'en-US';
   movieId: string;
 
