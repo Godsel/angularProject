@@ -50,7 +50,8 @@ export class MovieDetails {
       public revenue: number,
       public posterPath: string,
       public title: string,
-      public releaseDate: string
+      public releaseDate: string,
+      public id: number,
     ) { }
 
     static adapt(item: any): MovieDetails {
@@ -65,6 +66,7 @@ export class MovieDetails {
         item.poster_path,
         item.title,
         item.release_date,
+        item.id,
       );
     }
   }
