@@ -46,7 +46,8 @@ export class MovieFinderComponent implements OnInit {
 
   selectedGenre: Genre;
 
-  public isCollapsed = false;
+  public isGenresCollapsed = false;
+  public isOthersCollapsed = false;
 
   ngOnInit() {
       this.moviedbService.getMoviesGenres(this.language).subscribe((res => {
@@ -88,6 +89,20 @@ export class MovieFinderComponent implements OnInit {
 
   private getUpComingMovies(page: number, language: string) {
     this.moviedbService.getUpComingMovies(page, language).subscribe((res => {
+      this.movieRequest = res;
+      this.movies = this.movieRequest.movies;
+    }));
+  }
+
+  private getPopularMovies(page: number, language: string) {
+    this.moviedbService.getPopularMovies(page, language).subscribe((res => {
+      this.movieRequest = res;
+      this.movies = this.movieRequest.movies;
+    }));
+  }
+
+  private getTopRatedMovies(page: number, language: string) {
+    this.moviedbService.getTopRatedMovies(page, language).subscribe((res => {
       this.movieRequest = res;
       this.movies = this.movieRequest.movies;
     }));

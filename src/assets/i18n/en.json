@@ -6,8 +6,14 @@
     },
 
     "moviefinder": {
+        "pageName": "Movies",
         "genreHeader": "Movie Categories",
+        "othersHeader": "Other Categories",
         "searchPlaceHolder": "Search for movies...",
-        "results": "{{type}} '{{detail}}' Results"
+        "results": "{{type}} '{{detail}}' Results",
+        "popular": "Popular",
+        "topRated": "Top Rated",
+        "inTheater": "In Theater",
+        "upcoming": "Upcoming"
     }
 }
